@@ -1,0 +1,38 @@
+{
+  "name": "babel-plugin-import-to-require",
+  "version": "1.0.0",
+  "description": "Translate import statements to require statements",
+  "main": "./src/index.js",
+  "license": "MIT",
+  "author": {
+    "name": "Matt DesLauriers",
+    "email": "dave.des@gmail.com",
+    "url": "https://github.com/mattdesl"
+  },
+  "dependencies": {
+    "babel-template": "^6.26.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "tape": "^4.9.0"
+  },
+  "scripts": {
+    "test": "node test/"
+  },
+  "keywords": [
+    "import",
+    "to",
+    "require",
+    "plugin"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mattdesl/babel-plugin-import-to-require.git"
+  },
+  "homepage": "https://github.com/mattdesl/babel-plugin-import-to-require",
+  "bugs": {
+    "url": "https://github.com/mattdesl/babel-plugin-import-to-require/issues"
+  }
+}
