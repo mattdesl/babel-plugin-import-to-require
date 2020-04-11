@@ -5,7 +5,7 @@ tape('should transform', t => {
   const result = babel.transform(`import foo from 'foobar';`.trim(), {
     plugins: require.resolve('../')
   });
-  t.equal(result.code, "const foo = require('foobar');");
+  t.equal(result.code, "const foo = (m => m.__esModule ? m.default : m)(require('foobar'));");
   t.end();
 });
 
@@ -22,9 +22,9 @@ import foo from 'foobar';
   t.equal(result.code, `
 const a = require('./a');
 
-const blah = require('./blah');
+const blah = (m => m.__esModule ? m.default : m)(require('./blah'));
 
-const foo = require('foobar');
+const foo = (m => m.__esModule ? m.default : m)(require('foobar'));
   `.trim());
   t.end();
 });
@@ -43,7 +43,7 @@ import foo from 'foobar';
 const a = require('./a');
 import { blah } from './blah';
 
-const foo = require('foobar');
+const foo = (m => m.__esModule ? m.default : m)(require('foobar'));
   `.trim());
   t.end();
 });
@@ -78,11 +78,11 @@ import c from 'c';
     ]
   });
   t.equal(result.code, `
-const a = require('a');
+const a = (m => m.__esModule ? m.default : m)(require('a'));
 
 import foo from 'foobar';
 
-const b = require('b');
+const b = (m => m.__esModule ? m.default : m)(require('b'));
 
 import c from 'c';
   `.trim());

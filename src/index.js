@@ -9,7 +9,9 @@ module.exports = function ({ template, types: t }) {
               const importedModule = spec.parent.source.value;
               const varName = spec.node.local.name;
               if (translate(opts.modules, importedModule)) {
-                const buildRequire = template(`const IMPORT_NAME = require(SOURCE);`);
+                const buildRequire = template(
+                  `const IMPORT_NAME = (m => m.__esModule ? m.default : m)(require(SOURCE));`
+                );
                 const newNode = buildRequire({
                   IMPORT_NAME: t.identifier(varName),
                   SOURCE: t.stringLiteral(importedModule)
